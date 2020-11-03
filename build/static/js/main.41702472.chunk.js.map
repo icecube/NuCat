@@ -1,1 +1,0 @@
-{"version":3,"sources":["index.js"],"names":["ReactDOM","render","document","getElementById"],"mappings":"uJAGAA,EAASC,OACP,gDACAC,SAASC,eAAe,W","file":"static/js/main.41702472.chunk.js","sourcesContent":["import React from 'react';\nimport ReactDOM from 'react-dom';\n\nReactDOM.render(\n  <h1> Hello World! </h1>,\n  document.getElementById(\"root\")\n);"],"sourceRoot":""}
