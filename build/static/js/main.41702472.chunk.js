@@ -1,0 +1,2 @@
+(this["webpackJsonpnucat-react"]=this["webpackJsonpnucat-react"]||[]).push([[0],{4:function(e,t,c){"use strict";c.r(t);var n=c(2),r=(c(1),c(3));c.n(r).a.render(Object(n.jsx)("h1",{children:" Hello World! "}),document.getElementById("root"))}},[[4,1,2]]]);
+//# sourceMappingURL=main.41702472.chunk.js.map
