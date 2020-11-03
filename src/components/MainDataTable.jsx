@@ -19,7 +19,7 @@ function MainDataTable() {
     const { useState } = React;
     const [selectedRow, setSelectedRow] = useState(null);
     return (
-        <div>
+        <div style={{ maxWidth: '95%', margin: "auto" }}>
             <MaterialTable columns={columns}
                 data={data}
                 title="All Events"
@@ -27,11 +27,16 @@ function MainDataTable() {
                 options={{
                     rowStyle: rowData => ({
                         backgroundColor: (selectedRow === rowData.tableData.id) ? '#EEE' : '#FFF'
-                    })
+                    }),
+                    exportButton: true
+                }}
+                localization={{
+                    pagination: {
+                        labelDisplayedRows: '20-10 of 5'
+                    }
                 }}
             />
         </div>
-
     );
 }
 export default MainDataTable;
