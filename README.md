@@ -4,3 +4,5 @@ This is an online catalogue of IceCube collaboration. Unlike the previous [app] 
 
 ## Neutrino Events
 TBC.
+
+## REST APIs

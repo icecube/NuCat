@@ -6,6 +6,7 @@ class EventsInsert extends Component {
             <div>
                 <p>In this page you'll see the form to add an event.</p>
                 <p>You will need to use username / password to add events into DB.</p>
+                <p>Or you will submit a ticket and an administrator handles your request.</p>
             </div>
         )
     }

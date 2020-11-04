@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import MaterialTable from "material-table";
+import { useHistory } from 'react-router-dom';
+import MaterialTable, { MTableToolbar, MTableBodyRow } from "material-table";
 import api from "../api"
 
 import styled from 'styled-components'
@@ -37,6 +38,10 @@ class EventsList extends Component {
         const { events, isLoading } = this.state
         console.log('TCL: EventsList -> render -> events', events)
         const columns = [
+            // {
+            //     title: "id",
+            //     field: "_id",
+            // },
             {
                 title: "Name",
                 field: "Name",
@@ -59,12 +64,20 @@ class EventsList extends Component {
                         columns={columns}
                         data={events}
                         isLoading={isLoading}
-                        title="All Events"
+                        title="IceCube Astrophysical Neutrino Events"
                         options={{
                             pageSize: 20,
                             pageSizeOptions: [20, 50, 100],
                             exportButton: true
                         }}
+                        actions={[
+                            {
+                                icon: 'info',
+                                tooltip: 'Detail Info',
+                                onClick: (event, rowData) => alert("Do something with _id: " + rowData._id),
+                                // onClick: (event, rowData) => window.location.href=`/event/{rowData._id}`),
+                            }
+                        ]}
                     />
                 )}
             </Wrapper>

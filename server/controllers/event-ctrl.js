@@ -87,20 +87,20 @@ createEvent = (req, res) => {
 //     }).catch(err => console.log(err))
 // }
 
-// getMovieById = async (req, res) => {
-//     await Movie.findOne({ _id: req.params.id }, (err, movie) => {
-//         if (err) {
-//             return res.status(400).json({ success: false, error: err })
-//         }
+getEventById = async (req, res) => {
+    await Event.findOne({ _id: req.params.id }, (err, event) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
 
-//         if (!movie) {
-//             return res
-//                 .status(404)
-//                 .json({ success: false, error: `Movie not found` })
-//         }
-//         return res.status(200).json({ success: true, data: movie })
-//     }).catch(err => console.log(err))
-// }
+        if (!event) {
+            return res
+                .status(404)
+                .json({ success: false, error: `Event not found` })
+        }
+        return res.status(200).json({ success: true, data: event })
+    }).catch(err => console.log(err))
+}
 
 getEvents = async (req, res) => {
     await Event.find({}, (err, events) => {
@@ -122,5 +122,5 @@ module.exports = {
     // updateMovie,
     // deleteMovie,
     getEvents,
-    // getMovieById,
+    getEventById,
 }
