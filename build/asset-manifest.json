@@ -1,26 +1,30 @@
 {
   "files": {
-    "main.js": "/static/js/main.b8caa449.chunk.js",
-    "main.js.map": "/static/js/main.b8caa449.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.7ce5231d.js",
-    "runtime-main.js.map": "/static/js/runtime-main.7ce5231d.js.map",
-    "static/js/2.301d2211.chunk.js": "/static/js/2.301d2211.chunk.js",
-    "static/js/2.301d2211.chunk.js.map": "/static/js/2.301d2211.chunk.js.map",
-    "static/js/3.ab99623c.chunk.js": "/static/js/3.ab99623c.chunk.js",
-    "static/js/3.ab99623c.chunk.js.map": "/static/js/3.ab99623c.chunk.js.map",
-    "static/js/4.b7cfa26e.chunk.js": "/static/js/4.b7cfa26e.chunk.js",
-    "static/js/4.b7cfa26e.chunk.js.map": "/static/js/4.b7cfa26e.chunk.js.map",
-    "static/js/5.ee4bd35a.chunk.js": "/static/js/5.ee4bd35a.chunk.js",
-    "static/js/5.ee4bd35a.chunk.js.map": "/static/js/5.ee4bd35a.chunk.js.map",
+    "main.js": "/static/js/main.a4cbe026.chunk.js",
+    "main.js.map": "/static/js/main.a4cbe026.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.dfeb4c6a.js",
+    "runtime-main.js.map": "/static/js/runtime-main.dfeb4c6a.js.map",
+    "static/css/2.20aa2d7b.chunk.css": "/static/css/2.20aa2d7b.chunk.css",
+    "static/js/2.bb3b6099.chunk.js": "/static/js/2.bb3b6099.chunk.js",
+    "static/js/2.bb3b6099.chunk.js.map": "/static/js/2.bb3b6099.chunk.js.map",
+    "static/js/3.a7517c5b.chunk.js": "/static/js/3.a7517c5b.chunk.js",
+    "static/js/3.a7517c5b.chunk.js.map": "/static/js/3.a7517c5b.chunk.js.map",
+    "static/js/4.6b7d5105.chunk.js": "/static/js/4.6b7d5105.chunk.js",
+    "static/js/4.6b7d5105.chunk.js.map": "/static/js/4.6b7d5105.chunk.js.map",
+    "static/js/5.a4bab33b.chunk.js": "/static/js/5.a4bab33b.chunk.js",
+    "static/js/5.a4bab33b.chunk.js.map": "/static/js/5.a4bab33b.chunk.js.map",
     "index.html": "/index.html",
-    "static/js/2.301d2211.chunk.js.LICENSE.txt": "/static/js/2.301d2211.chunk.js.LICENSE.txt",
-    "static/js/3.ab99623c.chunk.js.LICENSE.txt": "/static/js/3.ab99623c.chunk.js.LICENSE.txt",
-    "static/js/4.b7cfa26e.chunk.js.LICENSE.txt": "/static/js/4.b7cfa26e.chunk.js.LICENSE.txt",
-    "static/js/5.ee4bd35a.chunk.js.LICENSE.txt": "/static/js/5.ee4bd35a.chunk.js.LICENSE.txt"
+    "static/css/2.20aa2d7b.chunk.css.map": "/static/css/2.20aa2d7b.chunk.css.map",
+    "static/js/2.bb3b6099.chunk.js.LICENSE.txt": "/static/js/2.bb3b6099.chunk.js.LICENSE.txt",
+    "static/js/3.a7517c5b.chunk.js.LICENSE.txt": "/static/js/3.a7517c5b.chunk.js.LICENSE.txt",
+    "static/js/4.6b7d5105.chunk.js.LICENSE.txt": "/static/js/4.6b7d5105.chunk.js.LICENSE.txt",
+    "static/js/5.a4bab33b.chunk.js.LICENSE.txt": "/static/js/5.a4bab33b.chunk.js.LICENSE.txt",
+    "static/media/ice-cube-logo.0110637f.png": "/static/media/ice-cube-logo.0110637f.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.7ce5231d.js",
-    "static/js/3.ab99623c.chunk.js",
-    "static/js/main.b8caa449.chunk.js"
+    "static/js/runtime-main.dfeb4c6a.js",
+    "static/css/2.20aa2d7b.chunk.css",
+    "static/js/2.bb3b6099.chunk.js",
+    "static/js/main.a4cbe026.chunk.js"
   ]
 }
