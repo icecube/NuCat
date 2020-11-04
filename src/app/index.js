@@ -1,10 +1,8 @@
 import React, { useState } from "react"
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import { NavBar } from '../components'
+import { NavBar, Footer } from '../components'
 import { EventsList, EventsInsert, EventsUpdate, About, EventInfo } from '../pages'
-
-// import Footer from "./Footer"
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 

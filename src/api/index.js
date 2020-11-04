@@ -1,8 +1,8 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL: 'https://cchen.nucat.gatech.edu/api',
-    // baseURL: 'http://localhost:3000/api',
+    // baseURL: 'https://cchen.nucat.gatech.edu/api',
+    baseURL: 'http://localhost:3000/api',
 })
 
 export const insertEvent = payload => api.post(`/event`, payload)
@@ -14,8 +14,8 @@ export const getEventById = id => api.get(`/event/${id}`)
 const apis = {
     insertEvent,
     getAllEvents,
-    // updateEventById,
-    // deleteEventById,
+    // updateEventById,    // TODO
+    // deleteEventById,    // TODO
     getEventById,
 }
 

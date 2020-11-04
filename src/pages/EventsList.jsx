@@ -11,13 +11,49 @@ const Wrapper = styled.div`
     border-radius: 3px;
     border: 2px solid ${props => props.theme.main};
 `
+function getRecommendEvents(events, requestedInfo) {
+    // Copy and modify on /neutrino-catalog/Public/Functions.js
+    const eventDict = {
+        'RA': 'Position PD',
+        'Dec': 'Position PD',
+        'RA 90%': 'Position PD',
+        'Dec 90%': 'Position PD',
+        'Time UTC': 'Time PD',
+        'Time MJD': 'Time PD',
+        'Type': 'Type PD',
+        'Energy': 'Energy PD'
+    }
+    events.map((event) => {
+        requestedInfo.forEach((fieldName) => {
+            // Temporary variables
+            var nameDate, fieldDate, fieldIndex, i;
+            // First figure out which publication date should be
+            // used for this requested field
+            nameDate = eventDict[fieldName];
+            // Get the publication date value
+            fieldDate = event[nameDate];
+            // Set the index to -1, so we get an error if not found
+            fieldIndex = -1;
+            // Loop through all publication dates to figure out
+            // the index of the publication date we are currently
+            // looking for
+            for (i = 0; i < event['Pub Date'].length; i++) {
+                if (event['Pub Date'][i] == fieldDate) {
+                    fieldIndex = i;
+                    break;
+                }
+            }
+            event[fieldName] = event[fieldName][i]
+        })
+    })
+    return events
+}
 
 class EventsList extends Component {
     constructor(props) {
         super(props)
         this.state = {
             events: [],
-            columns: [],
             isLoading: false,
         }
     }
@@ -38,20 +74,36 @@ class EventsList extends Component {
         const { events, isLoading } = this.state
         console.log('TCL: EventsList -> render -> events', events)
         const columns = [
-            // {
-            //     title: "id",
-            //     field: "_id",
-            // },
             {
                 title: "Name",
                 field: "Name",
             },
             {
-                title: "Time",
-                field: "Position PD",
+                title: "RA (deg)",
+                field: "RA",
+            },
+            {
+                title: "Dec (deg)",
+                field: "Dec",
+            },
+            {
+                title: "RA 90%",
+                field: "RA 90%",
+            },
+            {
+                title: "Dec 90%",
+                field: "Dec",
+            },
+            {
+                title: "Time (UTC)",
+                field: "Time UTC",
+            },
+            {
+                title: "Type",
+                field: "Type",
             },
         ];
-
+        getRecommendEvents(events, ['RA', 'Dec', 'RA 90%', 'Dec 90%', 'Time UTC', 'Type'])
         let showTable = true
         if (!events.length) {
             showTable = false
@@ -64,7 +116,7 @@ class EventsList extends Component {
                         columns={columns}
                         data={events}
                         isLoading={isLoading}
-                        title="IceCube Astrophysical Neutrino Events"
+                        title="IceCube Catalogue of Astrophysical Neutrino Candidates"
                         options={{
                             pageSize: 20,
                             pageSizeOptions: [20, 50, 100],
@@ -73,9 +125,10 @@ class EventsList extends Component {
                         actions={[
                             {
                                 icon: 'info',
-                                tooltip: 'Detail Info',
-                                onClick: (event, rowData) => alert("Do something with _id: " + rowData._id),
-                                // onClick: (event, rowData) => window.location.href=`/event/{rowData._id}`),
+                                tooltip: 'Details',
+                                onClick: (event, rowData) => {
+                                    window.location.href = "/event/" + rowData._id
+                                }
                             }
                         ]}
                     />
