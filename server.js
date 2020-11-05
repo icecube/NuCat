@@ -20,9 +20,16 @@ app.use(bodyParser.json())
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
-app.get('/', function (req, res) {
+app.get('/app', function (req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
+app.get('/app/*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+app.get('/', function (req, res) {
+    res.redirect('/app')
+})
+
 
 // app.post('/', function (req, res) {
 //     res.send("This is a post request");

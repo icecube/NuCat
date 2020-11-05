@@ -13,16 +13,16 @@ function App() {
             <div>
                 <NavBar />
                 <Switch>
-                    <Route path="/events/list" exact component={EventsList} />
-                    <Route path="/events/create" exact component={EventsInsert} />
+                    <Route path="/app" exact component={EventsList} />
+                    <Route path="/app/events/create" exact component={EventsInsert} />
                     <Route
                         // path="/events/update/:id"
-                        path="/events/update/"
+                        path="/app/events/update/"
                         exact
                         component={EventsUpdate}
                     />
-                    <Route path="/about" exact component={About} />
-                    <Route path="/event/:id" exact component={EventInfo} />
+                    <Route path="/app/about" exact component={About} />
+                    <Route path="/app/event/:id" exact component={EventInfo} />
                 </Switch>
                 <Footer className="footer" />
             </div>

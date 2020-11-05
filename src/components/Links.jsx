@@ -18,28 +18,28 @@ class Links extends Component {
     render() {
         return (
             <React.Fragment>
-                <Link to="/" className="navbar-brand">
+                <Link to="/app" className="navbar-brand">
                     NuCat
                 </Link>
                 <Collapse>
                     <List>
                         <Item className="active">
-                            <Link to="/events/list" className="nav-link">
+                            <Link to="/app" className="nav-link">
                                 List Events
                             </Link>
                         </Item>
                         <Item>
-                            <Link to="/events/create" className="nav-link">
+                            <Link to="/app/events/create" className="nav-link">
                                 Create Event
                             </Link>
                         </Item>
                         <Item>
-                            <Link to="/events/update" className="nav-link">
+                            <Link to="/app/events/update" className="nav-link">
                                 Update Event
                             </Link>
                         </Item>
                         <Item>
-                            <Link to="/about" className="nav-link">
+                            <Link to="/app/about" className="nav-link">
                                 About
                             </Link>
                         </Item>

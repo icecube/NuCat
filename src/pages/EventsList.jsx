@@ -164,7 +164,7 @@ class EventsList extends Component {
                                 icon: 'info',
                                 tooltip: 'Details',
                                 onClick: (event, rowData) => {
-                                    window.location.href = "/event/" + rowData._id
+                                    window.location.href = "/app/event/" + rowData._id
                                 }
                             },
                             {
