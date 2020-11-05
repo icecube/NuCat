@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { useHistory } from 'react-router-dom';
 import MaterialTable, { MTableToolbar, MTableBodyRow } from "material-table";
+import { Skymap } from '../components'
 import api from "../api"
 
 import styled from 'styled-components'
@@ -8,20 +9,23 @@ import styled from 'styled-components'
 const Wrapper = styled.div`
     padding: 0.25em 1em;
     margin: 1em;
-    border-radius: 3px;
+    border-radius: 10px;
     border: 2px solid ${props => props.theme.main};
 `
 function getRecommendEvents(events, requestedInfo) {
     // Copy and modify on /neutrino-catalog/Public/Functions.js
+    console.log("running get recommend")
     const eventDict = {
         'RA': 'Position PD',
         'Dec': 'Position PD',
+        "RA 50%": 'Position PD',
+        "Dec 50%": 'Position PD',
         'RA 90%': 'Position PD',
         'Dec 90%': 'Position PD',
         'Time UTC': 'Time PD',
         'Time MJD': 'Time PD',
+        'Energy': 'Energy PD',
         'Type': 'Type PD',
-        'Energy': 'Energy PD'
     }
     events.map((event) => {
         requestedInfo.forEach((fieldName) => {
@@ -32,18 +36,9 @@ function getRecommendEvents(events, requestedInfo) {
             nameDate = eventDict[fieldName];
             // Get the publication date value
             fieldDate = event[nameDate];
-            // Set the index to -1, so we get an error if not found
-            fieldIndex = -1;
-            // Loop through all publication dates to figure out
-            // the index of the publication date we are currently
-            // looking for
-            for (i = 0; i < event['Pub Date'].length; i++) {
-                if (event['Pub Date'][i] == fieldDate) {
-                    fieldIndex = i;
-                    break;
-                }
-            }
-            event[fieldName] = event[fieldName][i]
+            fieldIndex = event['Pub Date'].findIndex((element) => element === fieldDate);
+            if (fieldIndex === -1) event[fieldName] = event[fieldName][0]
+            else event[fieldName] = event[fieldName][fieldIndex]
         })
     })
     return events
@@ -77,33 +72,63 @@ class EventsList extends Component {
             {
                 title: "Name",
                 field: "Name",
+                defaultSort: "desc",
             },
             {
                 title: "RA (deg)",
                 field: "RA",
+                type: 'numeric',
+                // customSort: (a, b) => parseFloat(a.RA) - parseFloat(b.RA)
             },
             {
                 title: "Dec (deg)",
                 field: "Dec",
+                type: 'numeric',
+                // customSort: (a, b) => parseFloat(a.Dec) - parseFloat(b.Dec)
+            },
+            {
+                title: "RA 50%",
+                field: "RA 50%",
+                sorting: false,
+            },
+            {
+                title: "Dec 50%",
+                field: "Dec 50%",
+                sorting: false,
             },
             {
                 title: "RA 90%",
                 field: "RA 90%",
+                sorting: false,
             },
             {
                 title: "Dec 90%",
-                field: "Dec",
+                field: "Dec 90%",
+                sorting: false,
             },
             {
                 title: "Time (UTC)",
                 field: "Time UTC",
             },
             {
+                title: "Energy (TeV)",
+                field: "Energy",
+                sorting: false,
+                // type: 'numeric',
+                // customSort: (a, b) => {
+                //     if (isNaN(a.Energy) && isNaN(a.Energy)) return 0;
+                //     else if (isNaN(a.Energy)) return 0;
+                //     else if (isNaN(b.Energy)) return 0;
+                //     return parseFloat(a.Energy) - parseFloat(b.Energy)
+                // }
+            },
+            {
                 title: "Type",
                 field: "Type",
             },
         ];
-        getRecommendEvents(events, ['RA', 'Dec', 'RA 90%', 'Dec 90%', 'Time UTC', 'Type'])
+        //TODO: this pre-process should be inside setState of React
+        getRecommendEvents(events, ['RA', 'Dec', 'RA 50%', 'Dec 50%', 'RA 90%', 'Dec 90%', 'Time UTC', 'Energy', 'Type'])
         let showTable = true
         if (!events.length) {
             showTable = false
@@ -111,6 +136,7 @@ class EventsList extends Component {
 
         return (
             <Wrapper>
+                <Skymap />
                 {showTable && (
                     <MaterialTable
                         columns={columns}
@@ -120,7 +146,13 @@ class EventsList extends Component {
                         options={{
                             pageSize: 20,
                             pageSizeOptions: [20, 50, 100],
-                            exportButton: true
+                            exportButton: true,
+                            sorting: true,
+                            thirdSortClick: false,
+                            fixedColumns: {
+                                left: 1,
+                                right: 1,
+                            }
                         }}
                         actions={[
                             {
@@ -129,7 +161,15 @@ class EventsList extends Component {
                                 onClick: (event, rowData) => {
                                     window.location.href = "/event/" + rowData._id
                                 }
+                            },
+                            {
+                                icon: 'update',
+                                tooltip: 'Update',
+                                onClick: (event, rowData) => {
+                                    alert("For admins: You can update this entry directly in the future.")
+                                }
                             }
+
                         ]}
                     />
                 )}

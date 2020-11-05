@@ -3449,8 +3449,8 @@ const IceCubeCollection = [
             "2020-04-10 23:19:55.48"
         ],
         "Energy": [
-            "Bronze",
-            "Bronze"
+            "109.50",
+            "NaN"
         ],
         "Reference": [
             "Icecube collaboration, GCN Notice 24635982_133945 (2020)",

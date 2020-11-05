@@ -1,21 +1,33 @@
+require('dotenv').config()
 const Event = require('../models/event-model')
 
 createEvent = (req, res) => {
-    const body = req.body
-    // console.log(body);
+    var body = req.body
+    // if nothing post
     if (!body) {
         return res.status(400).json({
             success: false,
             error: 'You must provide an Event',
         })
     }
-
+    // if username/password is not provided
+    if (!body.hasOwnProperty("username") || !body.hasOwnProperty("password")) {
+        return res.status(401).json({ success: false, error: err })
+    }
+    const username = body.username
+    const password = body.password
+    // if username/password is not correct
+    if (username !== process.env.USERNAME || password !== process.env.DB_PASS) {
+        return res.status(401).json({ success: false, error: err })
+    }
+    delete body.username
+    delete body.password
     const event = new Event(body)
 
     if (!event) {
         return res.status(400).json({ success: false, error: err })
     }
-
+    // identity and schema passed -> DB
     event
         .save()
         .then(() => {

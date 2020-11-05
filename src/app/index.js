@@ -10,19 +10,22 @@ function App() {
     // https://medium.com/swlh/how-to-create-your-first-mern-mongodb-express-js-react-js-and-node-js-stack-7e8b20463e66
     return (
         <Router>
-            <NavBar />
-            <Switch>
-                <Route path="/" exact component={EventsList} />
-                <Route path="/events/create" exact component={EventsInsert} />
-                <Route
-                    // path="/events/update/:id"
-                    path="/events/update/"
-                    exact
-                    component={EventsUpdate}
-                />
-                <Route path="/about" exact component={About} />
-                <Route path="/event/:id" component={EventInfo} />
-            </Switch>
+            <div>
+                <NavBar />
+                <Switch>
+                    <Route path="/" exact component={EventsList} />
+                    <Route path="/events/create" exact component={EventsInsert} />
+                    <Route
+                        // path="/events/update/:id"
+                        path="/events/update/"
+                        exact
+                        component={EventsUpdate}
+                    />
+                    <Route path="/about" exact component={About} />
+                    <Route path="/event/:id" component={EventInfo} />
+                </Switch>
+                <Footer className="footer" />
+            </div>
         </Router>
     )
 };

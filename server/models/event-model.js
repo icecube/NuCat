@@ -1,3 +1,4 @@
+require('dotenv').config()
 const mongoose = require('mongoose')
 // const findOrCreate = require("mongoose-findorcreate")
 const Schema = mongoose.Schema
@@ -28,7 +29,7 @@ const eventSchema = new Schema(
         "Time PD": String,
         "Energy PD": String,
     },
-    { collection: 'IceCubeCollection' }
+    { collection: process.env.COLLECTION }
 )
 // eventSchema.plugin(findOrCreate);
 
