@@ -135,7 +135,7 @@ class EventsList extends Component {
         //TODO: this pre-process should be inside setState of React
         // getRecommendEvents(events, ['RA', 'Dec', 'RA 50%', 'Dec 50%', 'RA 90%', 'Dec 90%', 'Time UTC', 'Energy', 'Type'])
         let showTable = true
-        if (!events.length) {
+        if (!events || !events.length) {
             showTable = false
         }
 
