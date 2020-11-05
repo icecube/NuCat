@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-
+import { useRouteMatch } from 'react-router-dom'
 import { NavBar, Footer } from '../components'
 import { EventsList, EventsInsert, EventsUpdate, About, EventInfo } from '../pages'
 
@@ -22,7 +22,7 @@ function App() {
                         component={EventsUpdate}
                     />
                     <Route path="/about" exact component={About} />
-                    <Route path="/event/:id" component={EventInfo} />
+                    <Route path={`/event/:id`} component={EventInfo} />
                 </Switch>
                 <Footer className="footer" />
             </div>

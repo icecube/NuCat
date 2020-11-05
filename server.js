@@ -33,8 +33,12 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 //     console.log("Connection with MongoDB was successful");
 // });
 
-app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// app.get('/', function (req, res) {
+//     res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
+
+app.get('*', function (req, res) {
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
 });
 
 // app.post('/', function (req, res) {
