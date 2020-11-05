@@ -4,9 +4,8 @@ class About extends Component {
     render() {
         return (
             <div>
-                <p>In this page you'll see description of this full-stack project. </p>
-                <p>You will be able to contact Georgia Tech admins using a form.</p>
-
+                <p>This project is hosted at Georgia Tech on hosting.gatech.edu </p>
+                <p>This website serves as an online catalogue of IceCube neutrino candidate events.</p>
             </div>
         )
     }
