@@ -13,7 +13,7 @@ function App() {
             <div>
                 <NavBar />
                 <Switch>
-                    <Route path="/" exact component={EventsList} />
+                    <Route path="/events/list" exact component={EventsList} />
                     <Route path="/events/create" exact component={EventsInsert} />
                     <Route
                         // path="/events/update/:id"
