@@ -61,6 +61,11 @@ class EventsList extends Component {
                 events: events.data.data,
                 isLoading: false,
             })
+            this.setState({
+                events: getRecommendEvents(this.state.events, ['RA', 'Dec', 'RA 50%', 'Dec 50%', 'RA 90%', 'Dec 90%', 'Time UTC', 'Energy', 'Type']),
+                isLoading: false,
+            })
+
             console.log(events.data.data)
         })
     }
@@ -128,7 +133,7 @@ class EventsList extends Component {
             },
         ];
         //TODO: this pre-process should be inside setState of React
-        getRecommendEvents(events, ['RA', 'Dec', 'RA 50%', 'Dec 50%', 'RA 90%', 'Dec 90%', 'Time UTC', 'Energy', 'Type'])
+        // getRecommendEvents(events, ['RA', 'Dec', 'RA 50%', 'Dec 50%', 'RA 90%', 'Dec 90%', 'Time UTC', 'Energy', 'Type'])
         let showTable = true
         if (!events.length) {
             showTable = false

@@ -22,7 +22,7 @@ function App() {
                         component={EventsUpdate}
                     />
                     <Route path="/about" exact component={About} />
-                    <Route path={`/event/:id`} component={EventInfo} />
+                    <Route path="/event/:id" exact component={EventInfo} />
                 </Switch>
                 <Footer className="footer" />
             </div>
