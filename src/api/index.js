@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL: 'http://cchen.nucat.gatech.edu/api',
+    baseURL: 'https://cchen.nucat.gatech.edu/api',
     // baseURL: 'http://localhost:3000/api',
 })
 
