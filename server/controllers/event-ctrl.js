@@ -12,14 +12,13 @@ createEvent = (req, res) => {
             error: 'You must provide an Event',
         })
     }
-
+    // basic auth
     const credentials = auth(req)
     if (!credentials || !compare(credentials.name, process.env.USERNAME) || !compare(credentials.pass, process.env.DB_PASS)) {
         return res.status(401).json({ success: false, error: "Access denied." })
     }
-
+    // get model
     const event = new Event(body)
-
     if (!event) {
         return res.status(400).json({ success: false, error: "Invalid schema." })
     }

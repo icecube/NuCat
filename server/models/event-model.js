@@ -1,6 +1,6 @@
 require('dotenv').config()
 const mongoose = require('mongoose')
-// const findOrCreate = require("mongoose-findorcreate")
+const findOrCreate = require("mongoose-findorcreate")
 const Schema = mongoose.Schema
 
 const eventSchema = new Schema(
@@ -29,8 +29,8 @@ const eventSchema = new Schema(
         "Time PD": String,
         "Energy PD": String,
     },
-    { collection: process.env.COLLECTION }
+    // { collection: process.env.COLLECTION }
 )
-// eventSchema.plugin(findOrCreate);
+eventSchema.plugin(findOrCreate);
 
 module.exports = mongoose.model('Event', eventSchema);
