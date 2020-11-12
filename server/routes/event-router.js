@@ -17,5 +17,11 @@ router.post('/info', Ctrls.InfoCtrl.createInfo)
 router.get('/info/:id', Ctrls.InfoCtrl.getInfoById)
 router.get('/infos', Ctrls.InfoCtrl.getInfos)
 
+// router.post('/candidate', Ctrls.CandidateCtrl.createCandidate)
+// router.put('/event/:id', EventCtrl.updateMovie)
+// router.delete('/event/:id', EventCtrl.deleteMovie)
+router.get('/candidate/:id', Ctrls.CandidateCtrl.getCandidateById)
+router.get('/candidates', Ctrls.CandidateCtrl.getCandidates)
+
 
 module.exports = router

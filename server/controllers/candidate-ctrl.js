@@ -1,44 +1,44 @@
 require('dotenv').config()
 const auth = require('basic-auth')
 const compare = require('tsscmp')
-const Info = require('../models/info-model')
+const { Event, Candidate, Info } = require('../models')
 
-createInfo = (req, res) => {
-    var body = req.body
-    // if nothing post
-    if (!body) {
-        return res.status(400).json({
-            success: false,
-            error: 'You must provide an Info',
-        })
-    }
-    // basic auth
-    const credentials = auth(req)
-    if (!credentials || !compare(credentials.name, process.env.USERNAME) || !compare(credentials.pass, process.env.DB_PASS)) {
-        return res.status(401).json({ success: false, error: "Access denied." })
-    }
-    // get model
-    const info = new Info(body)
-    if (!info) {
-        return res.status(400).json({ success: false, error: "Invalid schema." })
-    }
-    // identity and schema passed -> DB
-    info
-        .save()
-        .then(() => {
-            return res.status(201).json({
-                success: true,
-                id: info._id,
-                message: 'Info created!',
-            })
-        })
-        .catch(error => {
-            return res.status(400).json({
-                error,
-                message: 'Info not created!',
-            })
-        })
-}
+// createInfo = (req, res) => {
+//     var body = req.body
+//     // if nothing post
+//     if (!body) {
+//         return res.status(400).json({
+//             success: false,
+//             error: 'You must provide an Info',
+//         })
+//     }
+//     // basic auth
+//     const credentials = auth(req)
+//     if (!credentials || !compare(credentials.name, process.env.USERNAME) || !compare(credentials.pass, process.env.DB_PASS)) {
+//         return res.status(401).json({ success: false, error: "Access denied." })
+//     }
+//     // get model
+//     const info = new Info(body)
+//     if (!info) {
+//         return res.status(400).json({ success: false, error: "Invalid schema." })
+//     }
+//     // identity and schema passed -> DB
+//     info
+//         .save()
+//         .then(() => {
+//             return res.status(201).json({
+//                 success: true,
+//                 id: info._id,
+//                 message: 'Info created!',
+//             })
+//         })
+//         .catch(error => {
+//             return res.status(400).json({
+//                 error,
+//                 message: 'Info not created!',
+//             })
+//         })
+// }
 
 // updateMovie = async (req, res) => {
 //     const body = req.body
@@ -94,40 +94,47 @@ createInfo = (req, res) => {
 //     }).catch(err => console.log(err))
 // }
 
-getInfoById = async (req, res) => {
-    await Info.findOne({ _id: req.params.id }, (err, info) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
-        }
-
-        if (!info) {
-            return res
-                .status(404)
-                .json({ success: false, error: `Info not found` })
-        }
-        return res.status(200).json({ success: true, data: info })
-    }).catch(err => console.log(err))
+/**
+ * Retrieve a Candidate by id and populate its Infos
+ */
+getCandidateById = async (req, res) => {
+    try {
+        await Candidate.findOne({ _id: req.params.id })
+            .populate('infos')
+            .exec(function (err, candidate) {
+                if (err) {
+                    return res.status(400).json({ success: false, error: err })
+                }
+                if (!candidate) {
+                    return res
+                        .status(404)
+                        .json({ success: false, error: `Candidate not found` })
+                }
+                return res.status(200).json({ success: true, data: candidate })
+            });
+    } catch (err) {
+        console.log(err)
+    }
 }
 
-getInfos = async (req, res) => {
-    await Info.find({}, (err, infos) => {
+getCandidates = async (req, res) => {
+    await Candidate.find({}, (err, candidates) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
-        if (!infos.length) {
+        if (!candidates.length) {
             return res
                 .status(404)
-                .json({ success: false, error: `infos not found` })
+                .json({ success: false, error: `candidates not found` })
         }
-        return res.status(200).json({ success: true, data: infos })
+        return res.status(200).json({ success: true, data: candidates })
     }).catch(err => console.log(err))
 }
 
 module.exports = {
-    createInfo,
-    // createMovie,
+    // createCandidate,
     // updateMovie,
     // deleteMovie,
-    getInfos,
-    getInfoById,
+    getCandidates,
+    getCandidateById,
 }

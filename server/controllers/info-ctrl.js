@@ -42,6 +42,7 @@ createInfo = (req, res) => {
                 ra90minus: i.ra90minus,
                 dec90plus: i.dec90plus,
                 dec90minus: i.dec90minus,
+                energy: i.energy,
                 type: i.type,
                 track: i.track,
                 infos: [i.id],
@@ -129,7 +130,7 @@ createInfo = (req, res) => {
 // }
 
 getInfoById = async (req, res) => {
-    await Info.findOne({ _id: req.params.id }, (err, info) => {
+    await Info.findOne({ run_id: req.params.run_id, event_id: req.params.event_id }, (err, info) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }

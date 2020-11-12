@@ -1,5 +1,5 @@
 require('dotenv').config()
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 // const findOrCreate = require("mongoose-findorcreate")
 const Schema = mongoose.Schema
 
@@ -10,7 +10,7 @@ const infoSchema = new Schema(
         run_id: { type: Number, required: true },
         event_id: { type: Number, required: true },
         rev: { type: Number, default: 0 },      // required or default 0
-        // Format: $track.$type.rev$REV.run$RUNNUM.evt$EVENTNUM (overwriten by server)
+        // Format: $track.$type.rev$REV.run$RUNNUM.evt$EVENTNUM (overwriten by server if not provide)
         name: String,
         // UTC String, accetped formats: 
         // e.g. "2010-12-10T13:06:27.944+00:00" [yyyy-mm-ddThh:mm:ss:lll+00:00]
@@ -44,18 +44,16 @@ const infoSchema = new Schema(
         // anything else (in json)
         json: Schema.Types.Mixed,
         created: { type: Date, default: Date.now },
-        // can only associated with candidate
-        candidate: {
-            type: Schema.Types.ObjectID,
-            ref: "Candidate",
-        },
+        // // can only associated with candidate [not needed]
+        // candidate: {
+        //     type: Schema.Types.ObjectID,
+        //     ref: "Candidate",
+        // },
     },
-    // { collection: process.env.COLLECTION }
 )
-// eventSchema.plugin(findOrCreate);
 // automaticlly assign name in format: $track.$type.rev$REV.run$RUNNUM.evt$EVENTNUM
 infoSchema.pre('save', function (next) {
-    this.name = this.track + "." + this.type + ".rev" + this.rev + ".run" + this.run_id + ".evt" + this.event_id;
+    if (!this.name) this.name = this.track + "." + this.type + ".rev" + this.rev + ".run" + this.run_id + ".evt" + this.event_id;
     next();
 });
 

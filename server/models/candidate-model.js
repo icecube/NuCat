@@ -42,8 +42,8 @@ const candidateSchema = new Schema(
             ref: "Info",
         }],
     },
-    // { collection: process.env.COLLECTION }
 )
+
 candidateSchema.plugin(findOrCreate);
 
 module.exports = mongoose.model('Candidate', candidateSchema);
