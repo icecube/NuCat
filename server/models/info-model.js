@@ -44,11 +44,6 @@ const infoSchema = new Schema(
         // anything else (in json)
         json: Schema.Types.Mixed,
         created: { type: Date, default: Date.now },
-        // // can only associated with candidate [not needed]
-        // candidate: {
-        //     type: Schema.Types.ObjectID,
-        //     ref: "Candidate",
-        // },
     },
 )
 // automaticlly assign name in format: $track.$type.rev$REV.run$RUNNUM.evt$EVENTNUM

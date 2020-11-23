@@ -19,6 +19,7 @@ const candidateSchema = new Schema(
             type: Date,
             get: v => v.toUTCString(),
         },
+        timeref: { type: Schema.Types.ObjectID, ref: "Info" },
         // in degrees J2000
         ra: { type: Number, min: 0.0, max: 360.0 },
         dec: { type: Number, min: -90.0, max: 90.0 },
@@ -30,12 +31,15 @@ const candidateSchema = new Schema(
         ra90minus: { type: Number, min: -360.0, max: 0 },
         dec90plus: { type: Number, min: 0.0, max: 180.0 },
         dec90minus: { type: Number, min: -180.0, max: 0.0 },
+        posref: { type: Schema.Types.ObjectID, ref: "Info" },
         // in TeV
         energy: Number,
+        energyref: { type: Schema.Types.ObjectID, ref: "Info" },
         // e.g: gfu-bronze / ehe-gold / hese-cascade / sourceflare
         type: { type: String, lowercase: true },
         // e.g: neutrinotrackalert / cascadealert / gfucluster / allskyflare / gcn-notice / gcn-circular
         track: { type: String, lowercase: true },
+        typetrackref: { type: Schema.Types.ObjectID, ref: "Info" },
         // multiple infos
         infos: [{
             type: Schema.Types.ObjectID,
