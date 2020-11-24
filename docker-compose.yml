@@ -1,0 +1,19 @@
+version: "3"
+services:
+  nucat-react:
+    image: nucat-react:v1.2
+    stdin_open: true
+    ports:
+      - "8000:8000"
+    networks:
+      - nucat-mern
+  nucat-node:
+    image: nucat-node:v1.0
+    ports:
+      - "3000:3000"
+    env_file: ./server/.env
+    networks:
+      - nucat-mern
+networks:
+  nucat-mern:
+    driver: bridge

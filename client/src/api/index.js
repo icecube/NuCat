@@ -3,7 +3,7 @@ import axios from 'axios'
 
 // const api = axios.create({
 //     // baseURL: 'https://cchen.nucat.gatech.edu/api',
-//     baseURL: 'http://localhost:3000/api',
+//     baseURL: 'http://localhost:3000/api',  // backend running on 3000
 // })
 const api = axios
 
