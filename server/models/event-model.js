@@ -29,7 +29,7 @@ const eventSchema = new Schema(
         "Time PD": String,
         "Energy PD": String,
     },
-    // { collection: process.env.COLLECTION }
+    { collection: process.env.COLLECTION }
 )
 eventSchema.plugin(findOrCreate);
 
