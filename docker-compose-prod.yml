@@ -1,10 +1,12 @@
 version: "3"
 services:
-  nucat-react:
-    image: nucat-react:v1.0
+  nucat-react-prod:
+    image: nucat-react-prod:v1.0
     stdin_open: true
     ports:
-      - "8000:8000"
+      - "8000:80"
+    environment:
+      NODE_ENV: production
     networks:
       - nucat-mern
   nucat-node:

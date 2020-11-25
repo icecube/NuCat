@@ -1,6 +1,8 @@
 # Dockerfile for React client
+
+### STAGE 1: Build ###
 # Build react client
-FROM node:12
+FROM node:12 AS client
 
 # Working directory be app
 WORKDIR /usr/src/app
@@ -12,10 +14,9 @@ RUN npm install --silent
 # copy local files to app folder
 COPY . .
 
-# production mode
+### STAGE 2: Production Environment ###
 RUN npm run build
-
-# Front end on 8000
-EXPOSE 8000
-
-CMD ["npm","start"]
+FROM nginx:1.19
+COPY --from=client /usr/src/app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
