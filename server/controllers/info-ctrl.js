@@ -52,9 +52,11 @@ createInfo = (req, res) => {
                 .findOrCreate(conditions, cand, function (err, doc, created) {
                     if (err) console.log(err);
                     if (!created) {
+                        // if not created => candidate already exists
                         Candidate.findOneAndUpdate(conditions, { '$push': { infos: i.id } })
                             .then(console.log("Successfully added one more info into existing candidate"));
                     } else {
+                        // if created => candidate did not exist
                         console.log("New candidate created:");
                         console.log(doc);
                     }

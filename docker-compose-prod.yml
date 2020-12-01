@@ -1,7 +1,7 @@
 version: "3"
 services:
   nucat-react-prod:
-    image: nucat-react-prod:v1.0
+    image: nucat-react-prod:v1.1
     stdin_open: true
     ports:
       - "8000:80"
@@ -19,3 +19,7 @@ services:
 networks:
   nucat-mern:
     driver: bridge
+volumes:
+  node_modules:
+  web-root:
+    driver: local

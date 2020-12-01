@@ -116,7 +116,9 @@ getCandidateById = async (req, res) => {
         console.log(err)
     }
 }
-
+/**
+ * Retrieve all candidates (default values)
+ */
 getCandidates = async (req, res) => {
     await Candidate.find({}, (err, candidates) => {
         if (err) {

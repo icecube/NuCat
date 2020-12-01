@@ -40,7 +40,7 @@ const infoSchema = new Schema(
         // url 
         link: String,
         // short comment
-        comment: { type: String, maxlength: 2000 },
+        comment: { type: String, maxlength: 5000 },
         // anything else (in json)
         json: Schema.Types.Mixed,
         created: { type: Date, default: Date.now },
