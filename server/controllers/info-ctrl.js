@@ -27,6 +27,10 @@ createInfo = (req, res) => {
         run_id: info.run_id,
         event_id: info.event_id,
     }
+    // TODO check if 
+    // $track.$type.rev$REV.run$RUNNUM.evt$EVENTNUM 
+    // already exists. raise error if does
+
     info
         .save().then((i) => {
             const cand = {
@@ -77,62 +81,94 @@ createInfo = (req, res) => {
         })
 }
 
-// updateMovie = async (req, res) => {
-//     const body = req.body
+updateInfo = async (req, res) => {
+    const body = req.body
 
-//     if (!body) {
-//         return res.status(400).json({
-//             success: false,
-//             error: 'You must provide a body to update',
-//         })
-//     }
+    if (!body) {
+        return res.status(400).json({
+            success: false,
+            error: 'You must provide a body to update',
+        })
+    }
+    // basic auth
+    const credentials = auth(req)
+    if (!credentials || !compare(credentials.name, process.env.USERNAME) || !compare(credentials.pass, process.env.DB_PASS)) {
+        return res.status(401).json({ success: false, error: "Access denied." })
+    }
 
-//     Movie.findOne({ _id: req.params.id }, (err, movie) => {
-//         if (err) {
-//             return res.status(404).json({
-//                 err,
-//                 message: 'Movie not found!',
-//             })
-//         }
-//         movie.name = body.name
-//         movie.time = body.time
-//         movie.rating = body.rating
-//         movie
-//             .save()
-//             .then(() => {
-//                 return res.status(200).json({
-//                     success: true,
-//                     id: movie._id,
-//                     message: 'Movie updated!',
-//                 })
-//             })
-//             .catch(error => {
-//                 return res.status(404).json({
-//                     error,
-//                     message: 'Movie not updated!',
-//                 })
-//             })
-//     })
-// }
+    Info.findOne({ _id: req.params.id }, (err, info) => {
+        if (err) {
+            return res.status(404).json({
+                err,
+                message: 'Info not found!',
+            })
+        }
+        // TODO if run_id/event_id get changed
+        // the candidate associated will be changed as well
+        // info.run_id = body.run_id
+        // info.event_id = body.event_id
+        info.rev = body.rev
+        info.name = body.name
+        info.time = body.time
+        info.ra = body.ra
+        info.dec = body.dec
+        info.ra50plus = body.ra50plus
+        info.ra50minus = body.ra50minus
+        info.dec50plus = body.dec50plus
+        info.dec50minus = body.dec50minus
+        info.ra90plus = body.ra90plus
+        info.ra90minus = body.ra90minus
+        info.dec90plus = body.dec90plus
+        info.dec90minus = body.dec90minus
+        info.energy = body.energy
+        info.type = body.type
+        info.track = body.track
+        info.reference = body.reference
+        info.link = body.link
+        info.comment = body.comment
+        info.json = body.json
+        info
+            .save()
+            .then(() => {
+                return res.status(200).json({
+                    success: true,
+                    id: info._id,
+                    message: 'Info updated!',
+                })
+            })
+            .catch(error => {
+                return res.status(404).json({
+                    error,
+                    message: 'Info not updated!',
+                })
+            })
+    })
+}
 
-// deleteMovie = async (req, res) => {
-//     await Movie.findOneAndDelete({ _id: req.params.id }, (err, movie) => {
-//         if (err) {
-//             return res.status(400).json({ success: false, error: err })
-//         }
+deleteInfo = async (req, res) => {
+    // basic auth
+    const credentials = auth(req)
+    if (!credentials || !compare(credentials.name, process.env.USERNAME) || !compare(credentials.pass, process.env.DB_PASS)) {
+        return res.status(401).json({ success: false, error: "Access denied." })
+    }
+    // TODO: change the candidate.infos
+    await Info.findOneAndDelete({ _id: req.params.id }, (err, info) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
 
-//         if (!movie) {
-//             return res
-//                 .status(404)
-//                 .json({ success: false, error: `Movie not found` })
-//         }
+        if (!info) {
+            return res
+                .status(404)
+                .json({ success: false, error: `Info not found` })
+        }
 
-//         return res.status(200).json({ success: true, data: movie })
-//     }).catch(err => console.log(err))
-// }
+        return res.status(200).json({ success: true, data: info })
+    }).catch(err => console.log(err))
+}
 
 getInfoById = async (req, res) => {
-    await Info.findOne({ run_id: req.params.run_id, event_id: req.params.event_id }, (err, info) => {
+    await Info.findOne({ _id: req.params.id }, (err, info) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -162,8 +198,8 @@ getInfos = async (req, res) => {
 
 module.exports = {
     createInfo,
-    // updateMovie,
-    // deleteMovie,
+    updateInfo,
+    deleteInfo,
     getInfos,
     getInfoById,
 }

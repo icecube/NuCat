@@ -32,7 +32,6 @@ const candidateSchema = new Schema(
         dec90minus: { type: Number, min: -180.0, max: 0.0 },
         // in TeV
         energy: Number,
-        energyref: { type: Schema.Types.ObjectID, ref: "Info" },
         // e.g: gfu-bronze / ehe-gold / hese-cascade / sourceflare
         type: { type: String, lowercase: true },
         // e.g: neutrinotrackalert / cascadealert / gfucluster / allskyflare / gcn-notice / gcn-circular

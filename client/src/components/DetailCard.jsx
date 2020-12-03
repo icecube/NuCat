@@ -8,57 +8,81 @@ const Div = styled.div`
     border-radius: 1em;
     border: 2px solid ${props => props.theme.main};
 `
+// TODO handle default values and info values distinctively
+// can use a separate prop to flag the difference
 
 function DetailCard(props) {
     const columns = [
         {
             title: "Name",
-            field: "Name",
+            field: "name",
         },
         {
             title: "RA (deg)",
-            field: "RA",
+            field: "ra",
             type: 'numeric',
-            // customSort: (a, b) => parseFloat(a.RA) - parseFloat(b.RA)
         },
         {
             title: "Dec (deg)",
-            field: "Dec",
+            field: "dec",
             type: 'numeric',
-            // customSort: (a, b) => parseFloat(a.Dec) - parseFloat(b.Dec)
         },
         {
-            title: "RA 50%",
-            field: "RA 50%",
+            title: "RA 50% +",
+            field: "ra50plus",
             sorting: false,
         },
         {
-            title: "Dec 50%",
-            field: "Dec 50%",
+            title: "RA 50% -",
+            field: "ra50minus",
             sorting: false,
         },
         {
-            title: "RA 90%",
-            field: "RA 90%",
+            title: "Dec 50% +",
+            field: "dec50plus",
             sorting: false,
         },
         {
-            title: "Dec 90%",
-            field: "Dec 90%",
+            title: "Dec 50% -",
+            field: "dec50minus",
+            sorting: false,
+        },
+        {
+            title: "RA 90% +",
+            field: "ra90plus",
+            sorting: false,
+        },
+        {
+            title: "RA 90% -",
+            field: "ra90minus",
+            sorting: false,
+        },
+        {
+            title: "Dec 90% +",
+            field: "dec90plus",
+            sorting: false,
+        },
+        {
+            title: "Dec 90% -",
+            field: "dec90minus",
             sorting: false,
         },
         {
             title: "Time (UTC)",
-            field: "Time UTC",
+            field: "time",
         },
         {
             title: "Energy (TeV)",
-            field: "Energy",
+            field: "energy",
             sorting: false,
         },
         {
             title: "Type",
-            field: "Type",
+            field: "type",
+        },
+        {
+            title: "Track",
+            field: "track",
         },
     ];
     console.log(props.info)
@@ -75,9 +99,25 @@ function DetailCard(props) {
                     exportButton: true,
                     fixedColumns: {
                         left: 1,
-                        right: 1,
+                        right: 0,
                     }
                 }}
+                actions={[
+                    {
+                        icon: 'delete',
+                        tooltip: 'Delete',
+                        onClick: (info, rowData) => {
+                            alert("For admins: You can delete this entry directly in the future.")
+                        }
+                    },
+                    {
+                        icon: 'update',
+                        tooltip: 'Update',
+                        onClick: (candidate, rowData) => {
+                            alert("For admins: You can update this entry directly in the future.")
+                        }
+                    }
+                ]}
             />
             <p>{props.info.Comment}</p>
             <p>{props.info.Link}</p>

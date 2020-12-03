@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { useRouteMatch } from 'react-router-dom'
 import { NavBar, Footer } from '../components'
-import { EventsList, EventsInsert, EventsUpdate, About, EventInfo, CandidateList } from '../pages'
+import { EventsList, EventsInsert, EventsUpdate, About, EventInfo, CandidateList, CandidateInfo } from '../pages'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
