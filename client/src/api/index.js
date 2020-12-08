@@ -1,12 +1,12 @@
 // require('dotenv').config()
 import axios from 'axios'
 
-// const api = axios.create({
-// baseURL: 'https://cchen.nucat.gatech.edu/api',  // for GT hosting
-// baseURL: 'http://localhost:3000/api',  // backend running on 3000
-// baseURL: 'http://localhost:3000',    // local test w/o Docker
-// })
-const api = axios // for Docker w/ Dev mode
+const api = axios.create({
+    // baseURL: 'https://cchen.nucat.gatech.edu/api',  // for GT hosting
+    // baseURL: 'http://localhost:3000/api',  // backend running on 3000
+    baseURL: 'http://localhost:3000',    // local test w/o Docker
+})
+// const api = axios // for Docker w/ Dev mode
 
 // export const insertEvent = payload => api.post(`/api/event`, payload)
 // export const getAllEvents = () => api.get(`/api/events`)
@@ -14,7 +14,7 @@ const api = axios // for Docker w/ Dev mode
 // export const deleteEventById = id => api.delete(`/api/event/${id}`)
 // export const getEventById = id => api.get(`/api/event/${id}`)
 
-export const insertInfo = payload => api.post(`/info`, payload)
+export const insertInfo = (payload, config) => api.post(`/api/info`, payload, config)
 export const getAllInfos = () => api.get(`/api/infos`)
 export const updateInfoById = (id, payload) => api.put(`/info/${id}`, payload)
 export const deleteInfoById = id => api.delete(`/info/${id}`)

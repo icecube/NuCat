@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class EventsUpdate extends Component {
+class InfoUpdate extends Component {
     render() {
         return (
             <div>
@@ -12,4 +12,4 @@ class EventsUpdate extends Component {
     }
 }
 
-export default EventsUpdate
+export default InfoUpdate

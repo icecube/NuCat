@@ -15,8 +15,8 @@ router.get('/info/:id', Ctrls.InfoCtrl.getInfoById)
 router.get('/infos', Ctrls.InfoCtrl.getInfos)
 
 // router.post('/candidate', Ctrls.CandidateCtrl.createCandidate)
-// router.put('/event/:id', EventCtrl.updateMovie)
-// router.delete('/event/:id', EventCtrl.deleteMovie)
+// router.put('/event/:id', EventCtrl.updateCandidate)
+// router.delete('/event/:id', EventCtrl.deleteCandidate)
 router.get('/candidate/:id', Ctrls.CandidateCtrl.getCandidateById)
 router.get('/candidates', Ctrls.CandidateCtrl.getCandidates)
 

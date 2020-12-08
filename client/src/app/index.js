@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { useRouteMatch } from 'react-router-dom'
 import { NavBar, Footer } from '../components'
-import { EventsList, EventsInsert, EventsUpdate, About, EventInfo, CandidateList, CandidateInfo } from '../pages'
+import { EventsList, InfoInsert, InfoUpdate, About, EventInfo, CandidateList, CandidateInfo } from '../pages'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -14,15 +14,13 @@ function App() {
                 <NavBar />
                 <Switch>
                     <Route path="/app" exact component={CandidateList} />
-                    <Route path="/app/events/create" exact component={EventsInsert} />
+                    <Route path="/app/infos/create" exact component={InfoInsert} />
                     <Route
                         // path="/events/update/:id"
-                        path="/app/events/update/"
-                        exact
-                        component={EventsUpdate}
+                        path="/app/infos/update/" exact component={InfoUpdate}
                     />
                     <Route path="/app/about" exact component={About} />
-                    <Route path="/app/event/:id" exact component={EventInfo} />
+                    {/* <Route path="/app/event/:id" exact component={EventInfo} /> */}
                     <Route path="/app/candidate/:id" exact component={CandidateInfo} />
                 </Switch>
                 <Footer className="footer" />

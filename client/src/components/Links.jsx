@@ -29,12 +29,12 @@ class Links extends Component {
                             </Link>
                         </Item>
                         <Item>
-                            <Link to="/app/events/create" className="nav-link">
+                            <Link to="/app/infos/create" className="nav-link">
                                 Create Event
                             </Link>
                         </Item>
                         <Item>
-                            <Link to="/app/events/update" className="nav-link">
+                            <Link to="/app/infos/update" className="nav-link">
                                 Update Event
                             </Link>
                         </Item>
