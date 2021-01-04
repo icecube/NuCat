@@ -100,6 +100,9 @@ function DetailCard(props) {
                     fixedColumns: {
                         left: 1,
                         right: 0,
+                    },
+                    rowStyle: {
+                        fontSize: 12,
                     }
                 }}
                 actions={[

@@ -83,7 +83,6 @@ createInfo = (req, res) => {
 
 updateInfo = async (req, res) => {
     const body = req.body
-
     if (!body) {
         return res.status(400).json({
             success: false,
@@ -107,6 +106,7 @@ updateInfo = async (req, res) => {
         // the candidate associated will be changed as well
         // info.run_id = body.run_id
         // info.event_id = body.event_id
+        // currently those two ids are not allowed to be changed
         info.rev = body.rev
         info.name = body.name
         info.time = body.time
@@ -152,11 +152,13 @@ deleteInfo = async (req, res) => {
         return res.status(401).json({ success: false, error: "Access denied." })
     }
     // TODO: change the candidate.infos
+    // 1. it might not be necessary
+    // populate on candidate will return null
+    // 2. try in info-model.js with middleware
     await Info.findOneAndDelete({ _id: req.params.id }, (err, info) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
-
         if (!info) {
             return res
                 .status(404)

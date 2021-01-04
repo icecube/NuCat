@@ -12,8 +12,10 @@ services:
   nucat-node:
     image: nucat-node:v1.0
     ports:
-      - "3000:3000"
+      - "3001:3000" # client/api/index.js line 5
     env_file: ./server/.env
+    environment:
+      - CHOKIDAR_USEPOLLING=true
     networks:
       - nucat-mern
 networks:

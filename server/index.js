@@ -7,13 +7,13 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const path = require('path');
 
-const mongoose = require("mongoose");
-const findOrCreate = require("mongoose-findorcreate")
 const db = require('./db')
 const eventRouter = require('./routes/event-router')
 
 const app = express();
+const port = process.env.PORT || 3000;
 const CLIENT_BUILD_PATH = path.join(__dirname, "../client/build");
+
 app.use(express.static(CLIENT_BUILD_PATH));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
@@ -33,13 +33,8 @@ app.get('/', function (req, res) {
     res.send("Hello world")
 })
 
-
-// app.post('/', function (req, res) {
-//     res.send("This is a post request");
-// });
-
 app.use('/api', eventRouter)
 
-app.listen(process.env.PORT || 3000, function () {
-    console.log("Server started on port 3000 or on " + process.env.PORT);
+app.listen(port, function () {
+    console.log(`Server started on port 3000 or on port: ${port}`);
 })

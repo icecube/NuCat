@@ -51,5 +51,14 @@ infoSchema.pre('save', function (next) {
     if (!this.name) this.name = this.track + "." + this.type + ".rev" + this.rev + ".run" + this.run_id + ".evt" + this.event_id;
     next();
 });
+/* remove info reference in candidate */
+infoSchema.pre('remove', { document: false, query: true }, function (next) {
+    this.model('Candidate').update(
+        { infos: this._id },
+        { $pull: { infos: this._id } },
+        { multi: true },
+        next
+    );
+})
 
 module.exports = mongoose.model('Info', infoSchema);

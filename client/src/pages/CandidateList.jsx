@@ -9,6 +9,7 @@ import styled from 'styled-components'
 const Wrapper = styled.div`
     padding: 0.25em 1em;
     margin: 1em;
+    width: 100%;
     border-radius: 10px;
     border: 2px solid ${props => props.theme.main};
 `
@@ -43,6 +44,11 @@ class EventsList extends Component {
                 field: "name",
             },
             {
+                title: "Time (UTC)",
+                field: "time",
+                defaultSort: "desc",
+            },
+            {
                 title: "RA (deg)",
                 field: "ra",
                 type: 'numeric',
@@ -53,14 +59,14 @@ class EventsList extends Component {
                 type: 'numeric',
             },
             {
-                title: "Time (UTC)",
-                field: "time",
-                defaultSort: "desc",
-            },
-            {
                 title: "Energy (TeV)",
                 field: "energy",
+                type: 'numeric',
                 sorting: false,
+            },
+            {
+                title: "Type",
+                field: "type",
             },
         ];
 
