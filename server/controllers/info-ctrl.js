@@ -1,7 +1,7 @@
 require('dotenv').config()
 const auth = require('basic-auth')
 const compare = require('tsscmp')
-const { Event, Candidate, Info } = require('../models')
+const { Candidate, Info } = require('../models')
 
 createInfo = (req, res) => {
     var body = req.body

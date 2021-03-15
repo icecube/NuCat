@@ -6,3 +6,18 @@ This is an online catalogue of IceCube collaboration. The previous application c
 TBC.
 
 ## REST APIs
+
+
+
+
+## Test with Node
+Fire up the backend:
+($pwd): .../NuCat/server
+`npm run server`
+
+Lauch the frontend:
+($pwd): .../NuCat/client
+`npm run start`
+
+Open the brower and go to http://localhost:8000/
+

@@ -36,11 +36,14 @@ const candidateSchema = new Schema(
         type: { type: String, lowercase: true },
         // e.g: neutrinotrackalert / cascadealert / gfucluster / allskyflare / gcn-notice / gcn-circular
         track: { type: String, lowercase: true },
+        // anything else (in json)
+        json: Schema.Types.Mixed,
         // multiple infos
         infos: [{
             type: Schema.Types.ObjectID,
             ref: "Info",
         }],
+
         // TODO store time/position/energy/source references
         // refs: { type: Schema.Types.ObjectID, ref: "Ref" },
     },

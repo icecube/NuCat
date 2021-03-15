@@ -2,7 +2,8 @@ import axios from 'axios'
 
 const api = axios.create({
     // baseURL: 'https://cchen.nucat.gatech.edu/api',  // for GT hosting
-    baseURL: 'http://localhost:3001',    // for Docker w/ Dev/Prod mode
+    baseURL: 'http://localhost:3000',       // for non-Docker testing (node)
+    // baseURL: 'http://localhost:3001',    // for Docker w/ Dev/Prod mode
     timeout: 1000
 })
 // const api = axios // this is a test
