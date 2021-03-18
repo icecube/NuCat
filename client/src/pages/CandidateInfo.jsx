@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import MaterialTable, { MTableToolbar, MTableBodyRow } from "material-table";
 import api from "../api"
-import { DetailCard } from '../components'
+import { DetailCard, Skymap } from '../components'
 import Divider from '@material-ui/core/Divider';
 
 import styled from 'styled-components'
@@ -39,7 +39,7 @@ class CandidateInfo extends Component {
     render() {
         const { candidate, isLoading } = this.state
         console.log('TCL: CandidateInfo -> render -> candidate', candidate)
-
+        // use `showInfos` to make sure data are loaded
         let showInfos = true
         if (!candidate.infos || !candidate.infos.length) {
             showInfos = false
@@ -47,13 +47,19 @@ class CandidateInfo extends Component {
         return (
             <Wrapper>
                 <Title>{candidate.name}</Title>
+                {
+                    showInfos &&
+                    <Skymap data={[candidate]} showCircle={true} showPoly={true} />
+                }
                 <div>
                     <Divider variant="middle" />
+                    <h1>Summary Table</h1>
                     <DetailCard info={candidate} />
                 </div>
                 {
                     showInfos && (
                         <div>
+                            <h1>Detail Card(s)</h1>
                             {candidate.infos.map((info, index) =>
                                 <div>
                                     <Divider variant="middle" />

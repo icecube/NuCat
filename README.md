@@ -11,6 +11,7 @@ TBC.
 
 
 ## Test with Node
+In .../NuCat/client/api/index.js choose the testing baseURL.
 Fire up the backend:
 ($pwd): .../NuCat/server
 `npm run server`

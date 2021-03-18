@@ -166,6 +166,10 @@ function Skymap(props) {
         HESELayer.addSources(HESEList);
         BronzeLayer.addSources(BronzeList);
         GoldLayer.addSources(GoldList);
+        console.log("EHEList: ", EHEList);
+        console.log("HESEList: ", HESEList);
+        console.log("BronzeList: ", BronzeList);
+        console.log("GoldList: ", GoldList);
     };
 
     useEffect(() => {

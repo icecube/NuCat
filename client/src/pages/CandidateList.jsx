@@ -77,7 +77,11 @@ class EventsList extends Component {
 
         return (
             <Wrapper>
-                <Skymap data={candidates} showCircle={true} showPoly={false} />
+                {
+                    showTable &&
+                    <Skymap data={candidates} showCircle={true} showPoly={false} />
+                }
+
                 {showTable && (
                     <MaterialTable
                         columns={columns}
