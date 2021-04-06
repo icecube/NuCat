@@ -13,7 +13,7 @@ TBC.
 
 ## Test Locally
 ### With Node
-In `.../NuCat/client/api/index.js`, choose the testing `baseURL`.
+In `.../NuCat/client/src/api/index.js`, choose the testing `baseURL`.
 
 Fire up the backend:
 
