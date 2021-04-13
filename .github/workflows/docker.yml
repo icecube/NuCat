@@ -35,7 +35,7 @@ jobs:
         images: |
           icecube/nucat
         tags: |
-            type=ref,event=push,prefix=client-
+            type=ref,event=branch,prefix=client-
             type=semver,pattern={client-{major}}
             type=semver,pattern=client-{{major}}.{{minor}}
             type=semver,pattern=client-{{major}}.{{minor}}.{{patch}}
@@ -66,7 +66,7 @@ jobs:
         images: |
           icecube/nucat
         tags: |
-            type=ref,event=push,prefix=server-
+            type=ref,event=branch,prefix=server-
             type=semver,pattern=server-{{major}}
             type=semver,pattern=server-{{major}}.{{minor}}
             type=semver,pattern=server-{{major}}.{{minor}}.{{patch}}
