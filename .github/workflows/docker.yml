@@ -62,7 +62,7 @@ jobs:
         push: ${{ github.event_name != 'pull_request' }}
 
     - name: Docker meta
-      id: docker_meta
+      id: docker_meta2
       uses: crazy-max/ghaction-docker-meta@v2
       with:
         # list of Docker images to use as base name for tags
@@ -84,6 +84,6 @@ jobs:
         builder: ${{ steps.buildx.outputs.name }}
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache
-        tags: ${{ steps.docker_meta.outputs.tags }}
-        labels: ${{ steps.docker_meta.outputs.labels }}
+        tags: ${{ steps.docker_meta2.outputs.tags }}
+        labels: ${{ steps.docker_meta2.outputs.labels }}
         push: ${{ github.event_name != 'pull_request' }}
