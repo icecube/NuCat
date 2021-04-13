@@ -34,14 +34,11 @@ jobs:
         # list of Docker images to use as base name for tags
         images: |
           icecube/nucat
-        # add git short SHA as Docker tag
-        flavor: |
-            prefix=client-
         tags: |
-            type=sha
-            type=semver,pattern={{major}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}.{{minor}}.{{patch}}
+            type=ref,event=push,prefix=client-
+            type=semver,pattern={client-{major}}
+            type=semver,pattern=client-{{major}}.{{minor}}
+            type=semver,pattern=client-{{major}}.{{minor}}.{{patch}}
 
     - name: Login to DockerHub
       uses: docker/login-action@v1
@@ -68,14 +65,11 @@ jobs:
         # list of Docker images to use as base name for tags
         images: |
           icecube/nucat
-        # add git short SHA as Docker tag
-        flavor: |
-            prefix=server-
         tags: |
-            type=sha
-            type=semver,pattern={{major}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}.{{minor}}.{{patch}}
+            type=ref,event=push,prefix=server-
+            type=semver,pattern=server-{{major}}
+            type=semver,pattern=server-{{major}}.{{minor}}
+            type=semver,pattern=server-{{major}}.{{minor}}.{{patch}}
 
     - name: Push Docker Image
       uses: docker/build-push-action@v2
