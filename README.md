@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # NuCat
 
 This is an online catalogue of likely astrophysical neutrino events published by IceCube collaboration. The previous application can be found [here](https://neutrino-catalog.icecube.aq/main) using HTML / CSS / JavaScript + Express JS / NodeJS + Firestore hosted on Google Firebase. This project, however, is developed using MERN (MongoDB, Express JS, React JS and Node JS) Stack. The prototype version is being hosted on [IceCube servers](https://icecube.wisc.edu/) and can be accessed [here](https://nucat.icecube.aq/app). This project is meant to catalogue these neutrino events as well as provide means of inputting data into the database.
@@ -119,3 +120,38 @@ TBC.
 TBC.
 
 >>>>>>> e82bb52 (Updated Readme)
+=======
+# NuCat
+
+This is an online catalogue of likely astrophysical neutrino events published by IceCube collaboration. The previous application can be found [here](https://neutrino-catalog.icecube.aq/main) using HTML / CSS / JavaScript + Express JS / NodeJS + Firestore hosted on Google Firebase. This project, however, is developed using MERN (MongoDB, Express JS, React JS and Node JS) Stack. The prototype version (branch: gthosting) is hosted on [Georgia Tech Hosting](https://hosting.gatech.edu) and can be accessed [here](https://cchen.nucat.gatech.edu) (outdated). This project is meant to catalogue these neutrino events as well as provide means of inputting data into the database.
+
+## Installation
+
+This project needs NodeJS, so to run it locally you will need to download if you don't already have it. To download Node for your OS, check [here](https://nodejs.org/en/download/package-manager/). Once you have Node, in both `NuCat/server` and `NuCat/client` run `npm install` to install the necessary packages.
+
+## Test Locally
+### With Node
+In `.../NuCat/client/src/api/index.js`, choose the testing `baseURL`. (Line 5)
+
+Launch the backend:
+
+(pwd).../NuCat/server: $ `npm run server`
+
+Launch the frontend:
+
+(pwd).../NuCat/client: $ `npm run start`
+
+The last command should automatically open your browser. If not, open the brower and go to http://localhost:8000/
+
+### With Docker
+In `.../NuCat/client/src/api/index.js`, choose the Docker `baseURL`. (Line 6)
+
+## REST APIs and Usage
+Neutrino events can be inserted into the database a few different ways using REST APIs. Below are a couple ways a user can input data.
+
+### Python
+TBC.
+### Postman
+TBC.
+
+>>>>>>> fba8efe (updated readme)
