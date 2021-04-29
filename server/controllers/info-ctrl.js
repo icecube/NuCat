@@ -14,7 +14,7 @@ createInfo = (req, res) => {
     }
     // basic auth
     const credentials = auth(req)
-    if (!credentials || !compare(credentials.name, process.env.USERNAME) || !compare(credentials.pass, process.env.DB_PASS)) {
+    if (!credentials || !compare(credentials.name, process.env.USERNAME) || !compare(credentials.pass, process.env.PASS)) {
         return res.status(401).json({ success: false, error: "Access denied." })
     }
     // apply model to get doc
@@ -91,7 +91,7 @@ updateInfo = async (req, res) => {
     }
     // basic auth
     const credentials = auth(req)
-    if (!credentials || !compare(credentials.name, process.env.USERNAME) || !compare(credentials.pass, process.env.DB_PASS)) {
+    if (!credentials || !compare(credentials.name, process.env.USERNAME) || !compare(credentials.pass, process.env.PASS)) {
         return res.status(401).json({ success: false, error: "Access denied." })
     }
 
@@ -148,7 +148,7 @@ updateInfo = async (req, res) => {
 deleteInfo = async (req, res) => {
     // basic auth
     const credentials = auth(req)
-    if (!credentials || !compare(credentials.name, process.env.USERNAME) || !compare(credentials.pass, process.env.DB_PASS)) {
+    if (!credentials || !compare(credentials.name, process.env.USERNAME) || !compare(credentials.pass, process.env.PASS)) {
         return res.status(401).json({ success: false, error: "Access denied." })
     }
     // TODO: change the candidate.infos

@@ -14,7 +14,7 @@ createCandidate = (req, res) => {
     }
     // basic auth
     const credentials = auth(req)
-    if (!credentials || !compare(credentials.name, process.env.USERNAME) || !compare(credentials.pass, process.env.DB_PASS)) {
+    if (!credentials || !compare(credentials.name, process.env.USERNAME) || !compare(credentials.pass, process.env.PASS)) {
         return res.status(401).json({ success: false, error: "Access denied." })
     }
     // get model
@@ -50,7 +50,7 @@ updateCandidate = async (req, res) => {
     }
     // basic auth
     const credentials = auth(req)
-    if (!credentials || !compare(credentials.name, process.env.USERNAME) || !compare(credentials.pass, process.env.DB_PASS)) {
+    if (!credentials || !compare(credentials.name, process.env.USERNAME) || !compare(credentials.pass, process.env.PASS)) {
         return res.status(401).json({ success: false, error: "Access denied." })
     }
 
@@ -92,7 +92,7 @@ updateCandidate = async (req, res) => {
 deleteCandidate = async (req, res) => {
     // basic auth
     const credentials = auth(req)
-    if (!credentials || !compare(credentials.name, process.env.USERNAME) || !compare(credentials.pass, process.env.DB_PASS)) {
+    if (!credentials || !compare(credentials.name, process.env.USERNAME) || !compare(credentials.pass, process.env.PASS)) {
         return res.status(401).json({ success: false, error: "Access denied." })
     }
     await Candidate.findOneAndDelete({ _id: req.params.id }, (err, candidate) => {

@@ -14,7 +14,7 @@ createEvent = (req, res) => {
     }
     // basic auth
     const credentials = auth(req)
-    if (!credentials || !compare(credentials.name, process.env.USERNAME) || !compare(credentials.pass, process.env.DB_PASS)) {
+    if (!credentials || !compare(credentials.name, process.env.USERNAME) || !compare(credentials.pass, process.env.PASS)) {
         return res.status(401).json({ success: false, error: "Access denied." })
     }
     // get model
