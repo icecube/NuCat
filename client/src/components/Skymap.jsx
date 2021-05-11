@@ -82,9 +82,9 @@ function Skymap(props) {
                 desc = desc + "<br/><em>Trigger time:</em> " + info.time + "<br/>";
                 desc =
                     desc +
-                    '<br/>Report <a target="_blank" href="api/candidate/"' +
+                    '<br/>Report <a target="_blank" href="app/candidate/' +
                     info._id +
-                    ">Link</a></p>";
+                    '">Link</a></p>';
                 let marker = A.marker(info.ra, info.dec, {
                     popupTitle: '<b style="color:black;">' + info.name + "</b>",
                     popupDesc: desc
