@@ -29,7 +29,7 @@ function Skymap(props) {
     let fov = 180;
     let targetCenter = "0.00 0.00";
     if (props.showPoly) {
-        fov = 100;
+        fov = 8;
         // centered at the first event in the list
         targetCenter = "{0} {1}".replace("{0}", props.data[0].ra);
         targetCenter = targetCenter.replace("{1}", props.data[0].dec);
@@ -82,9 +82,9 @@ function Skymap(props) {
                 desc = desc + "<br/><em>Trigger time:</em> " + info.time + "<br/>";
                 desc =
                     desc +
-                    '<br/>Report <a target="_blank" href="api/candidate/"' +
+                    '<br/>Report <a target="_blank" href="app/candidate/' +
                     info._id +
-                    ">Link</a></p>";
+                    '">Link</a></p>';
                 let marker = A.marker(info.ra, info.dec, {
                     popupTitle: '<b style="color:black;">' + info.name + "</b>",
                     popupDesc: desc
