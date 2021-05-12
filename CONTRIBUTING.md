@@ -41,7 +41,7 @@ project's repository.
     ```
 6. Push local branch to your forked repository.
     ```
-    git push -f origin remoteBranchName:branchName
+    git push -f origin branchName:remoteBranchName
     ```
 7. Create a Pull request on GitHub.
    Visit your fork at `https://github.com/icecube/NuCat` and click
