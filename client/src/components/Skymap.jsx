@@ -29,7 +29,7 @@ function Skymap(props) {
     let fov = 180;
     let targetCenter = "0.00 0.00";
     if (props.showPoly) {
-        fov = 100;
+        fov = 8;
         // centered at the first event in the list
         targetCenter = "{0} {1}".replace("{0}", props.data[0].ra);
         targetCenter = targetCenter.replace("{1}", props.data[0].dec);
