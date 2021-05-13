@@ -23,7 +23,7 @@ jobs:
 
 
     - name: Test Server Side
-      uses: actions/setupnode@v2
+      uses: actions/setup-node@v2
       with:
         node-version: 12.18.3
     - run: npm --prefix /server ci
