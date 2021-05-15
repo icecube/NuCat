@@ -18,14 +18,14 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: 12.x
-    - run: npm --prefix /client ci --unsafe-perm=true --allow-root
-    - run: npm --prefix /client run build
+    - run: sudo npm --prefix /client ci 
+    - run: sudo npm --prefix /client run build
 
 
     - name: Test Server Side
       uses: actions/setup-node@v2
       with:
         node-version: 12.x
-    - run: npm --prefix /server ci --unsafe-perm=true --allow-root
-    - run: npm --prefix /server run server
+    - run: sudo npm --prefix /server ci 
+    - run: sudo npm --prefix /server run server
 
