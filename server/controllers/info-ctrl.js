@@ -49,6 +49,7 @@ createInfo = (req, res) => {
                 energy: i.energy,
                 type: i.type,
                 track: i.track,
+                json: i.json,
                 infos: [i.id],
             }
             console.log(cand)
@@ -57,6 +58,10 @@ createInfo = (req, res) => {
                     if (err) console.log(err);
                     if (!created) {
                         // if not created => candidate already exists
+                        // append new i.id to candidate.infos
+                        // keep everything else untouched
+                        // manually update everything else 
+                        // (the latest may not be the best)
                         Candidate.findOneAndUpdate(conditions, { '$push': { infos: i.id } })
                             .then(console.log("Successfully added one more info into existing candidate"));
                     } else {
