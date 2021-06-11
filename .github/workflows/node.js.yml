@@ -13,22 +13,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
-    - name: Test Client Side
-      uses: actions/setup-node@v2
+    - name: Setup Node.js 12.x
+      uses: actions/setup-node@master
       with:
         node-version: 12.x
-        persist-credentials: false
+
+    - name: Test Client Side
       working-directory: ./client
     - run: sudo npm ci
     - run: sudo npm run build
 
 
     - name: Test Server Side
-      uses: actions/setup-node@v2
-      with:
-        node-version: 12.x
-        persist-credentials: false
       working-directory: ./server
     - run: sudo npm ci
     - run: sudo npm run server
