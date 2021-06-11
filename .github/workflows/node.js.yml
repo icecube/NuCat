@@ -15,20 +15,19 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Test Client Side
+      working-directory: ./client
       uses: actions/setup-node@v2
       with:
         node-version: 12.x
         persist-credentials: false
-    - run: sudo npm --prefix /client cache clean --force
-    - run: sudo npm --prefix /client ci 
-    - run: sudo npm --prefix /client run build
+    - run: sudo npm ci
+    - run: sudo npm run build
 
 
     - name: Test Server Side
+      working-directory: ./server 
       uses: actions/setup-node@v2
       with:
         node-version: 12.x
-    - run: sudo npm --prefix /client cache clean --force
-    - run: sudo npm --prefix /server ci 
-    - run: sudo npm --prefix /server run server
-
+    - run: sudo npm ci
+    - run: sudo npm run server
